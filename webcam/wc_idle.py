@@ -4,7 +4,7 @@ import time
 
 class Idle():
 
-    def __init__(cam):
+    def __init__(self,cam):
         self.stream = BytesIO()
         self.camera = cam
 
@@ -19,5 +19,6 @@ class Idle():
         pass
 
 if(__name__=="__main__"):
-    i = Idle()
-    i.check_activity()
+    with PiCamera as cam:
+        i = Idle(cam)
+        i.check_activity()
