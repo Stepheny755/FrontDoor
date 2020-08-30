@@ -11,6 +11,8 @@ class Idle():
     def check_act(self):
         cam.capture(self.stream,"jpeg")
         print(self.stream)
+        data = np.fromstring(stream.getvalue(),dtype=np.uint8)
+        print(data.shape)
         pass
 
     def get_difference(self,i1,i2):
