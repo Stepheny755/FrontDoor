@@ -19,6 +19,6 @@ class Idle():
         pass
 
 if(__name__=="__main__"):
-    with PiCamera as cam:
+    with PiCamera() as cam:
         i = Idle(cam)
         i.check_activity()
