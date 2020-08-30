@@ -12,27 +12,39 @@ class Idle():
         self.stream = BytesIO()
         self.camera = cam
 
+        self.use_jpg = False
+        self.activity_threshold = 0
+
+        self.prev_image = get_image_capture()
+
     def check_activity(self):
+        image = get_image_capture()
+
         pass
+
+    def get_image_capture(self):
+        if(self.use_jpg):
+            return get_image_capture_jpg()
+        else:
+            return get_image_capture_bgr()
 
     def get_image_capture_jpg(self):
         cam.capture(self.stream,"jpeg")
         print(self.stream)
         data = np.fromstring(self.stream.getvalue(),dtype=np.uint8)
         image = cv2.imdecode(data,1)
-        image = image[:,:,::-1]
-        print(data.shape)
-        print(image.shape)
-        return image
+        return self.bgr_to_rgb(image)
 
     def get_image_capture_bgr(self):
         with picamera.array.PiRGBArray(self.camera) as stream:
             self.camera.capture(stream,"bgr")
-            image = stream.array[:,:,::-1]
-            print(image.shape)
-            return image
+            image = stream.array
+            return self.bgr_to_rgb(image)
 
-    def get_difference(self,i1,i2):
+    def bgr_to_rgb(self,image):
+        return image[:,:,::-1]
+
+    def get_difference(self,image1,image2):
         pass
 
 if(__name__=="__main__"):
