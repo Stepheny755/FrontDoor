@@ -1,11 +1,11 @@
 from picamera import PiCamera
-from io import IOBytes
+from io import BytesIO
 import time
 
 class Idle():
 
     def __init__(cam):
-        self.stream = IOBytes()
+        self.stream = BytesIO()
         self.camera = cam
 
     def check_act(self):
