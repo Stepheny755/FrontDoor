@@ -8,7 +8,7 @@ class Idle():
         self.stream = BytesIO()
         self.camera = cam
 
-    def check_act(self):
+    def check_activity(self):
         cam.capture(self.stream,"jpeg")
         print(self.stream)
         data = np.fromstring(stream.getvalue(),dtype=np.uint8)
@@ -17,3 +17,7 @@ class Idle():
 
     def get_difference(self,i1,i2):
         pass
+
+if(__name__=="__main__"):
+    i = Idle()
+    i.check_activity()
