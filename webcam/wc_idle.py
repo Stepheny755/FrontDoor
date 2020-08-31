@@ -19,6 +19,7 @@ class Idle():
 
     def check_activity(self):
         image = get_image_capture()
+        print(get_difference(image,self.prev_image))
 
         pass
 
@@ -44,8 +45,11 @@ class Idle():
     def bgr_to_rgb(self,image):
         return image[:,:,::-1]
 
-    def get_difference(self,image1,image2):
-        pass
+    def get_difference(self,im1,im2):
+        result = cv2.fromarray(np.zeros(im1.shape))
+        cv2.MatchTemplate(im1,im2,result,cv2.CV_TM_CCORR_NORMED)
+        cv2.imshow(result)
+        return 0
 
 if(__name__=="__main__"):
     with picamera.PiCamera() as cam:
