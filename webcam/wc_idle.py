@@ -1,5 +1,6 @@
 
 from io import BytesIO
+from scipy import signal
 import numpy as np
 import picamera
 import picamera.array
@@ -15,19 +16,19 @@ class Idle():
         self.use_jpg = False
         self.activity_threshold = 0
 
-        self.prev_image = get_image_capture()
+        self.prev_image = self.get_image_capture()
 
     def check_activity(self):
-        image = get_image_capture()
-        print(get_difference(image,self.prev_image))
+        image = self.get_image_capture()
+        print(self.get_difference(image,self.prev_image))
 
         pass
 
     def get_image_capture(self):
         if(self.use_jpg):
-            return get_image_capture_jpg()
+            return self.get_image_capture_jpg()
         else:
-            return get_image_capture_bgr()
+            return self.get_image_capture_bgr()
 
     def get_image_capture_jpg(self):
         cam.capture(self.stream,"jpeg")
@@ -46,14 +47,21 @@ class Idle():
         return image[:,:,::-1]
 
     def get_difference(self,im1,im2):
+<<<<<<< HEAD
         return xcorr_fft
 
     def xcorr_fft(self,x):
         return x.shape
         #x = np.fft2(np.pad(x,([0,0],[0,])))
 
+=======
+        result = np.zeros(im1.shape)
+        corr = signal.correlate2d(im1,im2)
+        print(corr)
+        return 0
+>>>>>>> ba507e18a2b1eec15a67e515dc803fc2b03e8a99
 
 if(__name__=="__main__"):
     with picamera.PiCamera() as cam:
         i = Idle(cam)
-        i.get_image_capture_bgr()
+        i.check_activity()
