@@ -47,19 +47,12 @@ class Idle():
         return image[:,:,::-1]
 
     def get_difference(self,im1,im2):
-<<<<<<< HEAD
         return xcorr_fft
 
     def xcorr_fft(self,x):
         return x.shape
         #x = np.fft2(np.pad(x,([0,0],[0,])))
 
-=======
-        result = np.zeros(im1.shape)
-        corr = signal.correlate2d(im1,im2)
-        print(corr)
-        return 0
->>>>>>> ba507e18a2b1eec15a67e515dc803fc2b03e8a99
 
 if(__name__=="__main__"):
     with picamera.PiCamera() as cam:
