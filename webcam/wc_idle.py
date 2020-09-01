@@ -46,10 +46,12 @@ class Idle():
         return image[:,:,::-1]
 
     def get_difference(self,im1,im2):
-        result = cv2.fromarray(np.zeros(im1.shape))
-        cv2.MatchTemplate(im1,im2,result,cv2.CV_TM_CCORR_NORMED)
-        cv2.imshow(result)
-        return 0
+        return xcorr_fft
+
+    def xcorr_fft(self,x):
+        return x.shape
+        #x = np.fft2(np.pad(x,([0,0],[0,])))
+
 
 if(__name__=="__main__"):
     with picamera.PiCamera() as cam:
