@@ -47,11 +47,8 @@ class Idle():
         return image[:,:,::-1]
 
     def get_difference(self,im1,im2):
-        return xcorr_fft
-
-    def xcorr_fft(self,x):
-        return x.shape
-        #x = np.fft2(np.pad(x,([0,0],[0,])))
+        print(scipy.signal.fftconvolve(im1,im2[::-1,::-1,:]))
+        pass
 
 
 if(__name__=="__main__"):
