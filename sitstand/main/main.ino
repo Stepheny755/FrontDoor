@@ -3,15 +3,16 @@ int echo_pin = 2;
 
 void setup() {
   // put your setup code here, to run once:
-
+  
   pinMode(trig_pin,OUTPUT);
   pinMode(echo_pin,INPUT);
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
+  Serial.println("Hello");
+  delay(1000);
   //long duration = get_distance();
   //Serial.println(duration_to_length(duration));
   
