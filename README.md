@@ -7,4 +7,4 @@ A collection of small software/hardware hacks that improve my apartment QoL
 * webcam
   * front door person identification and facial recognition
 * sitstand
-  * custom memory console for my Jarvis standing desk using Arduino
+  * custom memory console for my Jarvis standing desk using an Arduino
