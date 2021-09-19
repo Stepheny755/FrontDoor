@@ -47,3 +47,10 @@ class Camera():
                 continue
             (x, y, w, h)=cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0,255,0), 1)
+
+        return
+
+if(__name__=="__main__"):
+    c = Camera()
+    while True:
+        c.detect_motion()
