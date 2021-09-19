@@ -1,7 +1,5 @@
 import cv2
 
-vc = cv2.VideoCapture(0)
-
 class Camera():
 
     def __init__(self, def_ref_rate: int = 5, def_timeout: int = 30):
@@ -41,6 +39,8 @@ class Camera():
                 continue
             (x, y, w, h)=cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0,255,0), 1)
+
+        cv2.imshow("Objects",frame)
 
         return
 
